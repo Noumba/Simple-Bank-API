@@ -62,4 +62,20 @@ class BankAccountController extends Controller
             return response(['message' => 'Update Failed']);
         }
     }
+
+    public function accountBalance(Request $request)
+    {
+
+        try {
+            if (Auth::user()) {
+                $accountBalances = auth()->user()->bankAccounts;
+
+                return response(['accounts and their balance' => $accountBalances]);
+            }
+        } catch (\Exception $e) {
+
+
+            return response(['message' => 'Retrieve balances Failed']);
+        }
+    }
 }

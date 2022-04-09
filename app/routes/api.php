@@ -24,6 +24,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::get('/get_accounts_balances', [App\Http\Controllers\BankAccountController::class, 'accountBalance']);
     Route::post('/create_bank_account', [App\Http\Controllers\BankAccountController::class, 'store']);
     Route::post('/update_bank_account/{id}', [App\Http\Controllers\BankAccountController::class, 'update']);
     Route::post('/transaction/{id?}', [App\Http\Controllers\TransactionController::class, 'performTransaction']);
